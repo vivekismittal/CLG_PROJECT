@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<HTML>
+
+<HEAD>
+    <!-- <script src="courseDet.js"></script> -->
+    <script>
+        let courseDetails = [];
+        // console.log(data);
+        function validateYear() {
+            var numbers = /^[0-9]+$/;
+            //   if(inputtxt.value.match(numbers))
+            if (!document.getElementById('year').value.match(numbers)) {
+                document.getElementById('errorname').innerHTML = "please enter number only";
+                //year.onfocus();
+                document.getElementById('year').setAttribute("style", "border-color:red;");
+            }
+            else if (document.getElementById('year').value < 2023) {
+                document.getElementById('errorname').innerHTML = "please enter year>=2023";
+                document.getElementById('year').setAttribute("style", "border-color:red;");
+            }
+            else {
+                document.getElementById('errorname').innerHTML = "";
+                document.getElementById('year').setAttribute("style", "border-color:black;");
+            }
+        }
+        function validateSection() {
+            var numbers = /^[0-9]+$/;
+            if (!document.getElementById('section').value.match(numbers)) {
+                document.getElementById('errorname1').innerHTML = "please enter number only";
+                document.getElementById('section').setAttribute("style", "border-color:red;");
+            }
+            else {
+                document.getElementById('errorname1').innerHTML = "";
+                document.getElementById('section').setAttribute("style", "border-color:black;");
+            }
+        }
+
+        function submitData() {
+            let currentRecord = {
+                course: document.getElementById('course').value,
+                branch: document.getElementById('branch').value,
+                section: document.getElementById('section').value,
+                passing_year: document.getElementById('year').value
+            };
+            console.log(courseDetails);
+            let isCourseUnique = true;
+            const numbersFormat = /^[0-9]+$/;
+            for (let i = 0; i < courseDetails.length; i++) {
+                if (courseDetails[i].course == currentRecord.course && courseDetails[i].branch == currentRecord.branch && courseDetails[i].section == currentRecord.section && courseDetails[i].passing_year == currentRecord.passing_year) {
+                    isCourseUnique = false;
+                    break;
+                }
+            }
+            if (isCourseUnique && document.getElementById('year').value.match(numbersFormat) && document.getElementById('year').value >= 2023 && document.getElementById('section').value.match(numbersFormat)) {
+                courseDetails.push(currentRecord);
+                console.log(courseDetails);
+                var code = ``;
+                code = code + `<p style="background-color:silver;height:30;border-style: outset;box-shadow:3px 3px silver;">${document.getElementById('course').value + "-" + document.getElementById('branch').value + "-" + document.getElementById('section').value + "-" + document.getElementById('year').value}</p>`;
+                document.getElementById('displayData').innerHTML += code;
+            }
+        }
+    </script>
+</HEAD>
+<TITLE> PAGE TITLE</TITLE>
+<style>
+    p,
+    div,
+    h2 {
+        text-align: center;
+    }
+</style>
+</HEAD>
+
+<BODY>
+    <div>
+        <BUTTON>LOGOUT</button>
+    </div>
+    </hr>
+    <H2>!!!WELCOME!!!</H2>
+    <p>
+        <BUTTON>
+            <h1>+ ADD NEW CLASS </H1>
+        </button>
+    </p>
+    <form>
+        <p>
+            <centre><label><b>Branch</b></br>
+                    <input type="text" name=" Branch" id="branch" placeholder="Enter Branch"></label></centre>
+        </p>
+        <p>
+            <centre><label><b>Course</b></br>
+                    <input type="text" id="course" placeholder="Enter Course"></label></centre>
+        </p>
+        <p>
+            <centre><label><b>Passing Year</b></br>
+                    <input type="text" id="year" oninput="validateYear()" placeholder="Enter year" min="2023"></label></centre>
+            <br />
+            <label id="errorname" style="color:red"></label>
+        </p>
+        <p>
+            <centre><label><b>Section</b></br>
+                    <input type="text" id="section" oninput="validateSection()" placeholder="Enter Section" min="1"></label></centre>
+            <br />
+            <label id="errorname1" style="color:red"></label>
+        </p>
+        <p>
+
+
+    </form>
+    <input type="submit" onclick="submitData()" value="Add" />
+    <input type="reset" />
+    <input type="button" id="clickme" onclick="getdata()" value="click me">
+    </p>
+    <p id="displayData"></p>
+</body>
+
+</html>

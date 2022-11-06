@@ -1,0 +1,17 @@
+<html>
+<body>
+    <script src="courseDet.js"></script>
+    <p style="background-color:black;height:30;color:white;">ALL CLASSES
+    <button style="color:green;background-color:black;" onclick="window.location='class.html';">Create class </button>
+ </p>
+<p id="listCourse"></p>
+</body>
+<script>
+    var code = ``;
+for (var i = 0; i < courseDetails.length; i++)
+    code = code + `<p style="background-color:silver;height:30;border-style: outset;box-shadow:3px 3px silver;">${courseDetails[i].course+"-"+courseDetails[i].branch+"-"+courseDetails[i].passing_year+"-"+courseDetails[i].section}</p>`;
+document.getElementById('listCourse').innerHTML += code;
+</script>
+
+
+</html>

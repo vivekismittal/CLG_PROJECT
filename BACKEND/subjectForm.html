@@ -1,0 +1,20 @@
+<html>
+    <script src="subjectDetails.js"></script>
+    <script>
+    function submitData(){
+        var curRecord={subjectName:document.getElementById('subjName').value,
+        subjectCode:document.getElementById('subjCode').valu,};
+        console.log(subject);
+        subject.push(curRecord);
+        console.log(subject);
+    }</script>
+    <body>
+        <h1>Enter New Subject Details</h1>
+        <form >
+            <p> <input type="text" id="subjName" name="sname" placeholder="Subject Name"></p>
+            <p><input type="text" id="subjCode" name="scode" placeholder="Subject Code"></p>
+            
+        </form>
+        <input type="submit" onclick="submitData()" value="Create" />
+    </body>
+</html>
