@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<HTML>
+
+<HEAD>
+    <script src="courseDet.js"></script>
+    <script>
+        // console.log(data);
+         function ch()
+        {
+            var numbers = /^[0-9]+$/;
+    //   if(inputtxt.value.match(numbers))
+         if(!document.getElementById('year').value.match(numbers))
+         {
+             document.getElementById('errorname').innerHTML="please enter number only";
+             //year.onfocus();
+             document.getElementById('year').setAttribute("style", "border-color:red;");
+         }
+         else if(document.getElementById('year').value<2023)
+         {
+             document.getElementById('errorname').innerHTML="please enter year>=2023";
+             document.getElementById('year').setAttribute("style", "border-color:red;");
+         }
+         else
+         {
+             document.getElementById('errorname').innerHTML="";
+             document.getElementById('year').setAttribute("style", "border-color:black;");
+         }
+    }
+    function ph()
+    {
+        var numbers = /^[0-9]+$/;
+        if(!document.getElementById('section').value.match(numbers))
+         {
+             document.getElementById('errorname1').innerHTML="please enter number only";
+             document.getElementById('section').setAttribute("style", "border-color:red;");
+         }
+         else
+         {
+             document.getElementById('errorname1').innerHTML="";
+             document.getElementById('section').setAttribute("style", "border-color:black;");
+         }
+    }
+            
+    function submitData(){
+        var curRecord={course:document.getElementById('course').value,
+        branch:document.getElementById('branch').value,
+        section:document.getElementById('section').value,
+        passing_year:document.getElementById('year').value};
+        console.log(courseDetails);
+        courseDetails.push(curRecord);
+        console.log(courseDetails);
+    }
+</script>
+</HEAD>
+    <TITLE> PAGE TITLE</TITLE>
+    <style>
+        p,
+        div,
+        h2 {
+            text-align: center;
+        }
+    </style>
+</HEAD>
+
+<BODY>
+    <div>
+        <BUTTON>LOGOUT</button>
+    </div>
+    </hr>
+    <H2>!!!WELCOME!!!</H2>
+    <p>
+        <BUTTON>
+            <h1>+ ADD NEW CLASS </H1>
+        </button>
+    </p>
+    <form >
+        <p>
+            <centre><label><b>Branch</b></br>
+                    <input type="text" name=" Branch" id="branch" placeholder="Enter Branch" ></label></centre>
+        </p>
+        <p>
+            <centre><label><b>Course</b></br>
+                    <input type="text" id="course" placeholder="Enter Course" ></label></centre>
+        </p>
+        <p>
+            <centre><label><b>Passing Year</b></br>
+                    <input type="text" id="year" oninput="ch()" placeholder="Enter year" min="2023" ></label></centre><br/>
+                    <label id="errorname" style="color:red"></label>
+                </p>
+        <p>
+            <centre><label><b>Section</b></br>
+                    <input type="text" id="section" oninput="ph()" placeholder="Enter Section" min="1" ></label></centre><br/>
+                 <label id="errorname1" style="color:red"></label>
+        </p>
+        
+           
+
+    </form>
+    <p>
+    <input type="submit" onclick="submitData()" value="Add" />
+    <input type="reset" />
+    <input type="button" id="clickme" onclick="getdata()" value="click me">
+    </p>
+</body>
+
+</html>
