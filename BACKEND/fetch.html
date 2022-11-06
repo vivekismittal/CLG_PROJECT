@@ -1,0 +1,49 @@
+<form method="POST">
+
+    <p><b>Login</b></p>
+    <label> name:</label><input type="text" id="name">
+    <br> <label> salary:</label> <input type="text" id="salary">
+    <br> <label> age:</label> <input type="text" id="age">
+    <!-- <br> <span id='message'>{{msg}}</span> -->
+    <br>
+
+</form>
+<button  onclick="check()" name="Submit"><b>Submit</b> </button>
+<button onclick="getData()" name="getData"><b>getData</b> </button>
+<script>
+    function check() {
+               url = "https://dummy.restapiexample.com/api/v1/create";
+        data = {
+            "name": document.getElementById('name').value,
+            "salary": document.getElementById('salary').value,
+            "age": document.getElementById('age').value
+        };
+        const other_params = {
+            headers: { "content-type": "application/json; charset=UTF-8" },
+            body: JSON.stringify(data),
+            method: "POST",
+            mode: "cors"
+        };
+        fetch(url, other_params)
+            .then(function (response) {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error("Could not reach the API: " + response.statusText);
+                }
+            }).then(function (data) {
+                console.log(data);
+            }).catch(function (error) {
+                console.log(error);
+            })
+    }
+    function getData() {
+        url = 'https://official-joke-api.appspot.com/random_joke';
+        console.log("hi")
+        fetch(url).then((response) => {
+            return response.json();
+        }).then((data) => {
+            console.log(data);
+        });
+    }
+</script>

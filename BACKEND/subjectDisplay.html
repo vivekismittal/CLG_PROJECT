@@ -1,0 +1,17 @@
+<html>
+<body>
+    <script src="subjectDetails.js"></script>
+    <p style="background-color:black;height:30;color:white;">ALL SUBJECT
+    <button style="color:green;background-color:black;" onclick="window.location='subjectForm.html';">Create Subject </button>
+ </p>
+<p id="listSubject"></p>
+</body>
+<script>
+    var code = ``;
+for (var i = 0; i < subject.length; i++)
+    code = code + `<p style="background-color:silver;height:30;border-style: outset;box-shadow:3px 3px silver;">${subject[i].subjectName+"-"+subject[i].subjectCode}</p>`;
+document.getElementById('listSubject').innerHTML += code;
+</script>
+
+
+</html>

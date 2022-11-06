@@ -1,0 +1,37 @@
+<head><script type="text/javascript">
+    function check()
+    {
+        var numbers = /^[0-9]+$/;
+    //   if(inputtxt.value.match(numbers))
+         if(!document.getElementById('year').value.match(numbers))
+         {
+             document.getElementById('errorname').innerHTML="please enter number only";
+             document.getElementById('year').setAttribute("style", "border-color:red;");
+         }
+         else if(document.getElementById('year').value<2023)
+         {
+             document.getElementById('errorname').innerHTML="please enter year>=2023";
+             document.getElementById('year').setAttribute("style", "border-color:red;");
+         }
+         else
+         {
+             document.getElementById('errorname').innerHTML="";
+             document.getElementById('year').setAttribute("style", "border-color:black;");
+         }
+    }
+ </script>
+ </head>
+ <body>
+<form>
+    <label>name</label>
+    <br>
+    <input type="text" />
+    <br>
+    
+    <label>year</label>
+    <br>
+    <input id="year" type="text" onchange="check()">
+    <br>
+    <label id="errorname" style="color:red"></label>
+</form>
+</body>
